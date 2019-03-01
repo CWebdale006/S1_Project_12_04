@@ -67,16 +67,18 @@ function candidateRows(raceNum, totalVotes) {
         // Declares a variable named candidatePercent equal to the value returned by the calcPercent() function when candidateVotes and totalVotes are parameters. 
         var candidatePercent = calcPercent(candidateVotes, totalVotes);
 
+        // Created a for loop with a counter variable k that goes from 0 up to a value less than vandidatePercent in increments of 1 unit. 
+        for (let k = 0; k < candidatePercent; k++) {
+            // Each time through the loop call the createBar() function using candidateParty and candidatePercent as the parameter values. 
+            createBar(candidateParty, candidatePercent);
+        }
+
         // Adds HTML code ot the rowHTMl variable. Applies the "toFixed(1)" method to percent. 
         rowHTML += "<tr><td>" + candidateName + " (" + candidateParty + ")</td><td>" + candidateVotes.toLocaleString() + " (" + candidatePercent.toFixed(1) + "%)</td></tr>";
     }
     // Returns the value of the rowHTMl variable. 
     return rowHTML;
 }
-
-
-
-
 
 /* Callback Function to calculate an array sum */
 function calcSum(value) {
@@ -86,4 +88,26 @@ function calcSum(value) {
 /* Function to calculate a percentage */
 function calcPercent(value, sum) {
     return (100 * value / sum);
+}
+
+// Creates a function named createBar() with one parameter named partyType. 
+function createBar(partyType) {
+    // Declares a variable named barHTML and sets its initial value to an empty text string. 
+    var barHTML = "";
+
+    // Creates a switch/case statement that tests the partyType parameter. 
+    switch (partyType) {
+        case "D":
+            barHTML = "<td class='dem'></td>"
+            break;
+        case "R":
+            barHTML = "<td class='rep'></td>"
+            break;
+        case "I":
+            barHTML = "<td class='ind'></td>"
+            break;
+    }
+
+    // Returns the value of barHTML 
+    return barHTML;
 }
