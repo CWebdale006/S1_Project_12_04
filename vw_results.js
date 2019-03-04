@@ -24,7 +24,7 @@
       
 */
 
-// Declares a variable named reportHTML containing HTMl text. 
+// Declares a variable named reportHTML containing HTML text. 
 var reportHTML = "<h1>" + raceTitle + "</h1>";
 
 // Created a "for" loop that loops through the contents of the race array. 
@@ -40,7 +40,6 @@ for (let i = 0; i < race.length; i++) {
 
     // Call the candidateRows() function using the counter variable "i" and the totalVotes variable as parameter values. Adds the value returned by this function to the value of the reportHTML variable. 
     reportHTML += candidateRows(i, totalVotes);
-
     // Adds HTML to the value of the reportHTML variable. 
     reportHTML += "</table>";
 }
@@ -67,16 +66,16 @@ function candidateRows(raceNum, totalVotes) {
         // Declares a variable named candidatePercent equal to the value returned by the calcPercent() function when candidateVotes and totalVotes are parameters. 
         var candidatePercent = calcPercent(candidateVotes, totalVotes);
 
-        // Created a for loop with a counter variable k that goes from 0 up to a value less than vandidatePercent in increments of 1 unit. 
+        // Created a for loop with a counter variable k that goes from 0 up to a value less than candidatePercent in increments of 1 unit. 
         for (let k = 0; k < candidatePercent; k++) {
             // Each time through the loop call the createBar() function using candidateParty and candidatePercent as the parameter values. 
             createBar(candidateParty, candidatePercent);
         }
 
-        // Adds HTML code ot the rowHTMl variable. Applies the "toFixed(1)" method to percent. 
+        // Adds HTML code to the rowHTMl variable. Applies the "toFixed(1)" method to candidatePercent. 
         rowHTML += "<tr><td>" + candidateName + " (" + candidateParty + ")</td><td>" + candidateVotes.toLocaleString() + " (" + candidatePercent.toFixed(1) + "%)</td></tr>";
     }
-    // Returns the value of the rowHTMl variable. 
+    // Returns the value of the rowHTML variable. 
     return rowHTML;
 }
 
@@ -98,14 +97,13 @@ function createBar(partyType) {
     // Creates a switch/case statement that tests the partyType parameter. 
     switch (partyType) {
         case "D":
-            barHTML = "<td class='dem'></td>"
+            barHTML = "<td class='dem'></td>";
             break;
         case "R":
-            barHTML = "<td class='rep'></td>"
+            barHTML = "<td class='rep'></td>";
             break;
         case "I":
-            barHTML = "<td class='ind'></td>"
-            break;
+            barHTML = "<td class='ind'></td>";
     }
 
     // Returns the value of barHTML 
