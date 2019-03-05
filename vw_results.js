@@ -66,14 +66,18 @@ function candidateRows(raceNum, totalVotes) {
         // Declares a variable named candidatePercent equal to the value returned by the calcPercent() function when candidateVotes and totalVotes are parameters. 
         var candidatePercent = calcPercent(candidateVotes, totalVotes);
 
+
+
+        // Adds HTML code to the rowHTMl variable. Applies the "toFixed(1)" method to candidatePercent. 
+        rowHTML += "<tr><td>" + candidateName + " (" + candidateParty + ")</td><td>" + candidateVotes.toLocaleString() + " (" + candidatePercent.toFixed(1) + "%)</td>"
+
         // Created a for loop with a counter variable k that goes from 0 up to a value less than candidatePercent in increments of 1 unit. 
         for (let k = 0; k < candidatePercent; k++) {
             // Each time through the loop call the createBar() function using candidateParty and candidatePercent as the parameter values. 
-            createBar(candidateParty, candidatePercent);
+            rowHTML += createBar(candidateParty, candidatePercent);
         }
 
-        // Adds HTML code to the rowHTMl variable. Applies the "toFixed(1)" method to candidatePercent. 
-        rowHTML += "<tr><td>" + candidateName + " (" + candidateParty + ")</td><td>" + candidateVotes.toLocaleString() + " (" + candidatePercent.toFixed(1) + "%)</td></tr>";
+        rowHTML += "</tr>";
     }
     // Returns the value of the rowHTML variable. 
     return rowHTML;
